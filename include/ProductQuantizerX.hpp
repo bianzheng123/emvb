@@ -88,7 +88,7 @@ struct ProductQuantizerX : faiss::ProductQuantizer
         const size_t doc_term_index)
     {
         const float *dt = this->precomputed_dis_table + query_term_index * ksub * M;
-        uint8_t *current_codes = codes + M * (offset + doc_term_index)  ;
+        const uint8_t *current_codes = codes + M * (offset + doc_term_index)  ;
 
         float dis = 0;
         for (size_t m = 0; m < M; m += 4)
