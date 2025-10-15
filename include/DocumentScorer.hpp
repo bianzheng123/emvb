@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iterator>
 #include <string>
 #include <vector>
 #include <fstream>
@@ -752,7 +753,7 @@ public:
             vector<size_t> current_line;
 
             std::stringstream ss(line_centroid_to_pid);
-            std::istream_iterator<std::string> begin(ss);
+            std::istream_iterator<std::string> begin{ss};
             std::istream_iterator<std::string> end;
             std::vector<std::string> tokens(begin, end);
             for (auto &s : tokens)

@@ -98,25 +98,24 @@ int main(int argc, char **argv)
     auto start = chrono::high_resolution_clock::now();
 
     cout << "SEARCH STARTED\n";
-#pragma omp parallel for default(none) shared() num_threads(n_thread)
+#pragma omp parallel for default(none) shared(n_queries, values_per_query, document_scorer, document_scorer_ref_l, thresh, nprobe, loaded_query_data, n_doc_to_score, out_second_stage, thresh_query, k, result_topk_l) num_threads(n_thread)
     for (size_t query_id = 0; query_id < n_queries; query_id++)
     {
         const int threadID = omp_get_thread_num();
-        auto start = chrono::high_resolution_clock::now();
         globalIdxType q_start = query_id * values_per_query;
 
         // PHASE 1: candidate documents retrieval
-        auto candidate_docs = document_scorer.find_candidate_docs(loaded_query_data, q_start, nprobe, thresh);
+        auto candidate_docs = document_scorer_ref_l[threadID].find_candidate_docs(loaded_query_data, q_start, nprobe, thresh);
 
 
         // PHASE 2: candidate document filtering
-        auto selected_docs = document_scorer.compute_hit_frequency(candidate_docs, thresh, n_doc_to_score);
+        auto selected_docs = document_scorer_ref_l[threadID].compute_hit_frequency(candidate_docs, thresh, n_doc_to_score);
 
         //  PHASE 3: second stage filtering
-        auto selected_docs_2nd = document_scorer.second_stage_filtering(loaded_query_data, q_start, selected_docs, out_second_stage);
+        auto selected_docs_2nd = document_scorer_ref_l[threadID].second_stage_filtering(loaded_query_data, q_start, selected_docs, out_second_stage);
 
         // PHASE 4: document scoring
-        auto query_res = document_scorer.compute_topk_documents_selected(loaded_query_data, q_start, selected_docs_2nd, k, thresh_query);
+        auto query_res = document_scorer_ref_l[threadID].compute_topk_documents_selected(loaded_query_data, q_start, selected_docs_2nd, k, thresh_query);
 
         for (int i = 0; i < k; i++)
         {
