@@ -51,6 +51,6 @@ CMake Deprecation Warning at external/cmd_line_parser/src/CMakeLists.txt:1 (cmak
 
 
 -- CMAKE_BUILD_TYPE: Debug
--- Configuring done (1.8s)
+-- Configuring done (2.4s)
 -- Generating done (0.1s)
 -- Build files have been written to: /home/bianzheng/emvb/cmake-build-debug

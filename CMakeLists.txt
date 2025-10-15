@@ -16,6 +16,7 @@ MESSAGE(STATUS "CMAKE_BUILD_TYPE: " ${CMAKE_BUILD_TYPE})
 
 include_directories(include)
 
+set(CMAKE_C_FLAGS "-O3 -ffast-math -march=native -fopenmp -g ${CMAKE_C_FLAGS}")
 # Set compiler options
 #if(NOT MSVC)
 #  #  set(CMAKE_C_FLAGS "-O3 -ffast-math -march=native -mavx512f  -funroll-loops -fopenmp -g ${CMAKE_C_FLAGS}")

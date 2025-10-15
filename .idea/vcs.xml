@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/cmd_line_parser" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/cnpy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/faiss" vcs="Git" />
   </component>
 </project>

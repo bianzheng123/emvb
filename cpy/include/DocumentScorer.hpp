@@ -79,8 +79,6 @@ public:
     ProductQuantizerX pq; 
     size_t globalCounter = 0;
 
-    DocumentScorer() = default;
-
     DocumentScorer(NpyArray& doclensArray, NpyArray& centroidsArray,
         NpyArray& centroidsAssignmentArray, NpyArray& pqCodesArray,
         NpyArray& pqCentroidsArray,

@@ -97,62 +97,53 @@ int main(int argc, char** argv)
     string pq_centroids_path = decomposed_index_path + "/pq_centroids.npy";
     NpyArray pqCentroidsArray = cnpy::npy_load(pq_centroids_path);
 
-    std::vector<DocumentScorer> document_scorer_l(n_thread);
-    for(int thread_id = 0; thread_id < n_thread; thread_id++)
-    {
-        document_scorer_l[thread_id] = DocumentScorer(doclensArray, centroidsArray, centroidsAssignmentArray,
+    DocumentScorer document_scorer(doclensArray, centroidsArray, centroidsAssignmentArray,
                                    pqCodesArray, pqCentroidsArray,
                                    decomposed_index_path, max_query_terms);
-    }
 
-    // DocumentScorer document_scorer(doclensArray, centroidsArray, centroidsAssignmentArray,
-                                   // pqCodesArray, pqCentroidsArray,
-                                   // decomposed_index_path, max_query_terms);
+    ofstream out_file; // file with final output
+    out_file.open(outputfile);
 
+    uint64_t total_time = 0;
     // uint64_t tot_time_score = 0;
     // uint64_t time_centroids_selection = 0;
     // uint64_t time_second_stage = 0;
 
     // uint64_t time_document_filtering = 0;
 
-    std::vector<std::vector<std::pair<unsigned long, float>>> result_topk_l(n_queries);
-    for(uint32_t query_id=0;query_id < n_queries;query_id++)
-    {
-        result_topk_l[query_id].resize(k);
-    }
-    auto start = chrono::high_resolution_clock::now();
     cout << "SEARCH STARTED\n";
-#pragma omp parallel for default(none) shared(n_queries, values_per_query, document_scorer_l, thresh, nprobe, loaded_query_data, n_doc_to_score, out_second_stage, thresh_query, k) num_threads(n_thread)
     for (size_t query_id = 0; query_id < n_queries; query_id++)
     {
-        const int threadID = omp_get_thread_num();
+        printf("queryID %d\n", query_id);
+        auto start = chrono::high_resolution_clock::now();
         globalIdxType q_start = query_id * values_per_query;
 
         // PHASE 1: candidate documents retrieval
-        auto candidate_docs =  document_scorer_l[threadID].find_candidate_docs(loaded_query_data, q_start, nprobe, thresh);
+        auto candidate_docs = document_scorer.find_candidate_docs(loaded_query_data, q_start, nprobe, thresh);
 
 
         // PHASE 2: candidate document filtering
-        auto selected_docs =  document_scorer_l[threadID].compute_hit_frequency(candidate_docs, thresh, n_doc_to_score);
+        auto selected_docs = document_scorer.compute_hit_frequency(candidate_docs, thresh, n_doc_to_score);
 
         //  PHASE 3: second stage filtering
-        auto selected_docs_2nd =  document_scorer_l[threadID].second_stage_filtering(loaded_query_data, q_start, selected_docs,
+        auto selected_docs_2nd = document_scorer.second_stage_filtering(loaded_query_data, q_start, selected_docs,
                                                                         out_second_stage);
 
         // PHASE 4: document scoring
-        auto query_res =  document_scorer_l[threadID].compute_topk_documents_selected(
+        auto query_res = document_scorer.compute_topk_documents_selected(
             loaded_query_data, q_start, selected_docs_2nd, k, thresh_query);
-    }
-    uint64_t total_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
 
-    ofstream out_file; // file with final output
-    out_file.open(outputfile);
-    for(size_t query_id = 0; query_id < n_queries; query_id++)
-    {
-        for(int i = 0; i < k; i++)
+        auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(
+            std::chrono::high_resolution_clock::now() - start).count();
+        total_time += elapsed;
+        // write top k file
+
+        for (int i = 0; i < k; i++)
         {
-            out_file << qid_map[query_id] << "\t" << result_topk_l[query_id][i].first << "\t" << i + 1 << "\t" << result_topk_l[query_id][i].second << endl;
+            out_file << qid_map[query_id] << "\t" << get<0>(query_res[i]) << "\t" << i + 1 << "\t" << get<
+                1>(query_res[i]) << endl;
         }
+        out_file.flush();
     }
 
     out_file.flush();
