@@ -10,26 +10,28 @@ using namespace std;
 using namespace cnpy;
 
 
+const uint32_t BUFFER_SIZE_REF = 50000;
+
 // Select the correct function at compile time
 #if defined(__AVX512F__)  // AVX-512 is supported
-    #define filter_if_optimal filter_if_avx512
+#define filter_if_optimal_ref filter_if_avx512
 #else  // Use the scalar version if no AVX-512 support
-    #define filter_if_optimal filter_if
+#define filter_if_optimal_ref filter_if
 #endif
 
 
 // Select the correct function at compile time
 #if defined(__AVX512F__)  // AVX-512 is supported
-    #define compute_score_by_column_reduction_optimal compute_score_by_column_reduction
+#define compute_score_by_column_reduction_optimal_ref compute_score_by_column_reduction
 #else  // Use the scalar version if no AVX-512 support
-    #define compute_score_by_column_reduction_optimal compute_score_by_column_reduction_scalar
+#define compute_score_by_column_reduction_optimal_ref compute_score_by_column_reduction_scalar
 #endif
 
 
 #if defined(__AVX512F__)  // AVX-512 is supported
-    #define filter_centroids_in_scoring_optimal filter_centroids_in_scoring
+#define filter_centroids_in_scoring_optimal_ref filter_centroids_in_scoring
 #else  // Use the scalar version if no AVX-512 support
-    #define filter_centroids_in_scoring_optimal filter_centroids_in_scoring_scalar
+#define filter_centroids_in_scoring_optimal_ref filter_centroids_in_scoring_scalar
 #endif
 
 
@@ -69,9 +71,9 @@ public:
     ProductQuantizerX pq;
     size_t globalCounter = 0;
 
-    DocumentScorerRef(const DocumentScorer ds_ins)
+    DocumentScorerRef(const DocumentScorer& ds_ins)
     {
-        start_sorted = new size_t[BUFFER_SIZE];
+        start_sorted = new size_t[BUFFER_SIZE_REF];
         M = ds_ins.M;
         alpha = 1.;
         beta = 0.;
@@ -137,6 +139,8 @@ public:
         }
     }
 
+    DocumentScorerRef()=default;
+
     ~DocumentScorerRef()
     {
         delete[] start_sorted;
@@ -177,7 +181,6 @@ public:
 
     size_t *filter_if_avx512(const float th, const size_t i)
     {
-
         size_t *sorted_indexes = start_sorted;
         __m512 broad_th = _mm512_set1_ps(th);
         __m512 current_values;
@@ -218,7 +221,7 @@ public:
             size_t current_n_probe = nprobe;
 
             // auto sorted_indexes = filter_branchless_avx512(th, i);
-            auto sorted_indexes = filter_if_optimal(th, i);
+            auto sorted_indexes = filter_if_optimal_ref(th, i);
             // auto sorted_indexes = filter_branchless(th, i);
 
             assign_bitvector_32(start_sorted, sorted_indexes - start_sorted, i, this->bitvectors);
@@ -447,7 +450,7 @@ public:
 
             auto centroid_distances = compute_ip_with_centroids(queries_data + q_start, doc_id);
 
-            auto score = compute_score_by_column_reduction_optimal(centroid_distances, doclen, M);
+            auto score = compute_score_by_column_reduction_optimal_ref(centroid_distances, doclen, M);
             // TODO: here, replace with heap (Maybe)
 
             if (min_heap.size() < n_documents)
@@ -663,7 +666,7 @@ public:
                     distances[i * doclen + j] = centroid_distances[j * M + i];
                 }
 
-                auto current_indexes = filter_centroids_in_scoring_optimal(th, &distances[i * doclen], doclen);
+                auto current_indexes = filter_centroids_in_scoring_optimal_ref(th, &distances[i * doclen], doclen);
 
                 if (current_indexes == this->buffer_centroids)
                 {

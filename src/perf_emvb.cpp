@@ -81,7 +81,11 @@ int main(int argc, char **argv)
 
     // load documents
     DocumentScorer document_scorer(alldoclens_path, index_dir_path, vec_per_query);
-    std::vector<DocumentScorerRef> document_scorer_ref_l(n_thread, document_scorer);
+    std::vector<DocumentScorerRef> document_scorer_ref_l(n_thread);
+    for(uint32_t threadID=0;threadID < n_thread;threadID++)
+    {
+        document_scorer_ref_l[threadID] = DocumentScorerRef(document_scorer);
+    }
 
 
     // uint64_t tot_time_score = 0;

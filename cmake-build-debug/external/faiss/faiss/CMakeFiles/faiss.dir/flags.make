@@ -6,5 +6,5 @@ CXX_DEFINES = -DFINTEGER=int
 
 CXX_INCLUDES = -I/home/bianzheng/emvb/include -I/home/bianzheng/emvb/external/faiss
 
-CXX_FLAGS = -O3 -ffast-math -march=native -mavx512f -mavx512vl -mavx512bw -funroll-loops -fopenmp -g   -ggdb -Wall -Wextra -Wno-missing-braces -g -std=gnu++11 -fPIC -fdiagnostics-color=always -fopenmp
+CXX_FLAGS = -g -std=gnu++11 -fPIC -fdiagnostics-color=always -fopenmp
 

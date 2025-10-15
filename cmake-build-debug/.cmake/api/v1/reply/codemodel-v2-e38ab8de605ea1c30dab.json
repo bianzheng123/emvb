@@ -1,0 +1,422 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						6,
+						7
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						19
+					]
+				},
+				{
+					"build" : "external/faiss",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-external.faiss-Debug-d9ba6a6791f509c3fe03.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23.1"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "external/faiss"
+				},
+				{
+					"build" : "external/faiss/faiss",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-external.faiss.faiss-Debug-b9755577f1fe202b2ad3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "external/faiss/faiss",
+					"targetIndexes" : 
+					[
+						17,
+						18
+					]
+				},
+				{
+					"build" : "external/faiss/demos",
+					"jsonFile" : "directory-external.faiss.demos-Debug-c25a52a791b901d198b6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "external/faiss/demos",
+					"targetIndexes" : 
+					[
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				},
+				{
+					"build" : "external/faiss/benchs",
+					"jsonFile" : "directory-external.faiss.benchs-Debug-92530791d7143d869216.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "external/faiss/benchs",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "external/faiss/tutorial/cpp",
+					"jsonFile" : "directory-external.faiss.tutorial.cpp-Debug-f74326bacfa1e4a6e534.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23.1"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "external/faiss/tutorial/cpp",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "external/cnpy",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-external.cnpy-Debug-b00099ce4b6b9796ec2a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "external/cnpy",
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						16
+					]
+				},
+				{
+					"build" : "external/cmd_line_parser",
+					"childIndexes" : 
+					[
+						8
+					],
+					"jsonFile" : "directory-external.cmd_line_parser-Debug-427cbb57eaa5a1723a19.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "external/cmd_line_parser"
+				},
+				{
+					"build" : "external/cmd_line_parser/src",
+					"jsonFile" : "directory-external.cmd_line_parser.src-Debug-d9ad67d4cc8b3a2ac4a1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 7,
+					"projectIndex" : 4,
+					"source" : "external/cmd_line_parser/src",
+					"targetIndexes" : 
+					[
+						15,
+						20
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "EMVB",
+					"targetIndexes" : 
+					[
+						19
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"name" : "faiss",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						17,
+						18
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "CNPY",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						16
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						4
+					],
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "CMD_LINE_PARSER",
+					"parentIndex" : 0
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "CMD_PARSER",
+					"parentIndex" : 3,
+					"targetIndexes" : 
+					[
+						15,
+						20
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 5,
+					"id" : "1-Flat::@d95e0b3e74ccfa884fa0",
+					"jsonFile" : "target-1-Flat-Debug-b6e98b7ede3fc2028956.json",
+					"name" : "1-Flat",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "2-IVFFlat::@d95e0b3e74ccfa884fa0",
+					"jsonFile" : "target-2-IVFFlat-Debug-a537bfec3e55c7e64bc8.json",
+					"name" : "2-IVFFlat",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "3-IVFPQ::@d95e0b3e74ccfa884fa0",
+					"jsonFile" : "target-3-IVFPQ-Debug-429db15e7cd1d170827d.json",
+					"name" : "3-IVFPQ",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "4-GPU::@d95e0b3e74ccfa884fa0",
+					"jsonFile" : "target-4-GPU-Debug-2b1b60350ac5d0bc09bc.json",
+					"name" : "4-GPU",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "5-Multiple-GPUs::@d95e0b3e74ccfa884fa0",
+					"jsonFile" : "target-5-Multiple-GPUs-Debug-24006b2f8bdfcefb7160.json",
+					"name" : "5-Multiple-GPUs",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "bench_ivf_selector::@fef9579cdbc7f8aed9f5",
+					"jsonFile" : "target-bench_ivf_selector-Debug-8a6e609047e8f3074086.json",
+					"name" : "bench_ivf_selector",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "cnpy::@6e336ab1413620e5523a",
+					"jsonFile" : "target-cnpy-Debug-fd1d8fc45b27cdbcbd61.json",
+					"name" : "cnpy",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "cnpy-static::@6e336ab1413620e5523a",
+					"jsonFile" : "target-cnpy-static-Debug-914763ba83271da7dc1f.json",
+					"name" : "cnpy-static",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "demo_imi_flat::@5192e14a8008f62fa5d7",
+					"jsonFile" : "target-demo_imi_flat-Debug-225956e16d3778f4332c.json",
+					"name" : "demo_imi_flat",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "demo_imi_pq::@5192e14a8008f62fa5d7",
+					"jsonFile" : "target-demo_imi_pq-Debug-6602671c57e71d8913c3.json",
+					"name" : "demo_imi_pq",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "demo_ivfpq_indexing::@5192e14a8008f62fa5d7",
+					"jsonFile" : "target-demo_ivfpq_indexing-Debug-5a88d8a2288414a840b8.json",
+					"name" : "demo_ivfpq_indexing",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "demo_nndescent::@5192e14a8008f62fa5d7",
+					"jsonFile" : "target-demo_nndescent-Debug-5a44a74d9e1b87029176.json",
+					"name" : "demo_nndescent",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "demo_residual_quantizer::@5192e14a8008f62fa5d7",
+					"jsonFile" : "target-demo_residual_quantizer-Debug-42c69d127741f2e0624c.json",
+					"name" : "demo_residual_quantizer",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "demo_sift1M::@5192e14a8008f62fa5d7",
+					"jsonFile" : "target-demo_sift1M-Debug-4db0dfcb402181825ea2.json",
+					"name" : "demo_sift1M",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "demo_weighted_kmeans::@5192e14a8008f62fa5d7",
+					"jsonFile" : "target-demo_weighted_kmeans-Debug-033fd9d83442c1294db5.json",
+					"name" : "demo_weighted_kmeans",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "example::@7e70838ec5c3448f60fa",
+					"jsonFile" : "target-example-Debug-6a35b904c15280013606.json",
+					"name" : "example",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "example1::@6e336ab1413620e5523a",
+					"jsonFile" : "target-example1-Debug-d42ec0c18f8a041051ff.json",
+					"name" : "example1",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "faiss::@4f45fee92732d97bb1a0",
+					"jsonFile" : "target-faiss-Debug-9cce8619d8a88ab5b5a2.json",
+					"name" : "faiss",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "faiss_avx2::@4f45fee92732d97bb1a0",
+					"jsonFile" : "target-faiss_avx2-Debug-87a45c923e637291c465.json",
+					"name" : "faiss_avx2",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "perf_emvb::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-perf_emvb-Debug-e3cfc6c6bf9da582e56c.json",
+					"name" : "perf_emvb",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "test_parse::@7e70838ec5c3448f60fa",
+					"jsonFile" : "target-test_parse-Debug-96a0f0bd23eae00c4fd7.json",
+					"name" : "test_parse",
+					"projectIndex" : 4
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/bianzheng/emvb/cmake-build-debug",
+		"source" : "/home/bianzheng/emvb"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}
