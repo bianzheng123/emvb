@@ -84,18 +84,18 @@ int main(int argc, char** argv)
     const size_t max_query_terms = vec_per_query;
 
     string codes_path = decomposed_index_path + "/residuals.npy";
-    NpyArray pqCodesArray = cnpy::npy_load(codes_path);
+    const NpyArray pqCodesArray = cnpy::npy_load(codes_path);
 
     string centroids_path = decomposed_index_path + "/centroids.npy";
-    NpyArray centroidsArray = cnpy::npy_load(centroids_path);
+    const NpyArray centroidsArray = cnpy::npy_load(centroids_path);
 
     string centroids_assignment_path = decomposed_index_path + "/index_assignment.npy";
-    NpyArray centroidsAssignmentArray = cnpy::npy_load(centroids_assignment_path);
+    const NpyArray centroidsAssignmentArray = cnpy::npy_load(centroids_assignment_path);
 
-    NpyArray doclensArray = cnpy::npy_load(doclens_path);
+    const NpyArray doclensArray = cnpy::npy_load(doclens_path);
 
     string pq_centroids_path = decomposed_index_path + "/pq_centroids.npy";
-    NpyArray pqCentroidsArray = cnpy::npy_load(pq_centroids_path);
+    const NpyArray pqCentroidsArray = cnpy::npy_load(pq_centroids_path);
 
     std::vector<DocumentScorer> document_scorer_l(n_thread);
     for(int thread_id = 0; thread_id < n_thread; thread_id++)

@@ -38,14 +38,14 @@ inline void compute_distance(
 
 struct ProductQuantizerX : faiss::ProductQuantizer
 {
-    uint8_t *codes;
+    const uint8_t *codes;
     vector<float> distance_matrix;
 //    float * precomputed_distance_table;
     size_t skip_counter = 0;
     vector<size_t> query_indexes;
     vector<size_t> neg_query_indexes;
 
-    ProductQuantizerX(size_t d, size_t M, size_t nbits, uint8_t *codes, const vector<float> centroids)
+    ProductQuantizerX(size_t d, size_t M, size_t nbits, const uint8_t *codes, const vector<float> centroids)
         : faiss::ProductQuantizer(d, M, nbits), codes(codes)
     {
         this->centroids = centroids;

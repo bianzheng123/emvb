@@ -48,9 +48,9 @@ class DocumentScorer
 {
 private:
     vector<vector<size_t>> centroids_to_pid;
-    uint8_t *pq_codes;
-    float *centroids;
-    size_t *centroids_assignments;
+    const uint8_t *pq_codes;
+    const float *centroids;
+    const size_t *centroids_assignments;
 
     numDocsType n_docs;
     size_t K; // length of document and query vectors is the same
@@ -65,7 +65,7 @@ private:
 
     vector<uint32_t> bitvectors;
     vector<uint64_t> bitvectors_centroids;
-    int *all_doclens;
+    const int *all_doclens;
     vector<globalIdxType> doc_offsets; // store the starting position of each document
     size_t topt;
     size_t *start_sorted;
@@ -81,10 +81,10 @@ public:
 
     DocumentScorer() = default;
 
-    DocumentScorer(NpyArray& doclensArray, NpyArray& centroidsArray,
-        NpyArray& centroidsAssignmentArray, NpyArray& pqCodesArray,
-        NpyArray& pqCentroidsArray,
-        const string decomposed_index_path, size_t max_query_terms)
+    DocumentScorer(const NpyArray& doclensArray, const NpyArray& centroidsArray,
+        const NpyArray& centroidsAssignmentArray, const NpyArray& pqCodesArray,
+        const NpyArray& pqCentroidsArray,
+        const string& decomposed_index_path, size_t max_query_terms)
     {
         start_sorted = new size_t[BUFFER_SIZE];
         M = max_query_terms;
