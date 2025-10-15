@@ -97,10 +97,11 @@ int main(int argc, char** argv)
     string pq_centroids_path = decomposed_index_path + "/pq_centroids.npy";
     const NpyArray pqCentroidsArray = cnpy::npy_load(pq_centroids_path);
 
-    std::vector<DocumentScorer> document_scorer_l(n_thread);
+    std::vector<std::unique_ptr<DocumentScorer>> document_scorer_l(n_thread);
+
     for(int thread_id = 0; thread_id < n_thread; thread_id++)
     {
-        document_scorer_l[thread_id] = DocumentScorer(doclensArray, centroidsArray, centroidsAssignmentArray,
+        document_scorer_l[thread_id] = std::make_unique<DocumentScorer>(doclensArray, centroidsArray, centroidsAssignmentArray,
                                    pqCodesArray, pqCentroidsArray,
                                    decomposed_index_path, max_query_terms);
     }
@@ -129,18 +130,18 @@ int main(int argc, char** argv)
         globalIdxType q_start = query_id * values_per_query;
 
         // PHASE 1: candidate documents retrieval
-        auto candidate_docs =  document_scorer_l[threadID].find_candidate_docs(loaded_query_data, q_start, nprobe, thresh);
+        auto candidate_docs =  document_scorer_l[threadID]->find_candidate_docs(loaded_query_data, q_start, nprobe, thresh);
 
 
         // PHASE 2: candidate document filtering
-        auto selected_docs =  document_scorer_l[threadID].compute_hit_frequency(candidate_docs, thresh, n_doc_to_score);
+        auto selected_docs =  document_scorer_l[threadID]->compute_hit_frequency(candidate_docs, thresh, n_doc_to_score);
 
         //  PHASE 3: second stage filtering
-        auto selected_docs_2nd =  document_scorer_l[threadID].second_stage_filtering(loaded_query_data, q_start, selected_docs,
+        auto selected_docs_2nd =  document_scorer_l[threadID]->second_stage_filtering(loaded_query_data, q_start, selected_docs,
                                                                         out_second_stage);
 
         // PHASE 4: document scoring
-        auto query_res =  document_scorer_l[threadID].compute_topk_documents_selected(
+        auto query_res =  document_scorer_l[threadID]->compute_topk_documents_selected(
             loaded_query_data, q_start, selected_docs_2nd, k, thresh_query);
     }
     uint64_t total_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
