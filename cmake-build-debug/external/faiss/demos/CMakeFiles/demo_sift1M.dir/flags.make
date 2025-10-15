@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/bianzheng/emvb/include -I/home/bianzheng/emvb/external/faiss
 
-CXX_FLAGS = -g -std=gnu++11 -fdiagnostics-color=always
+CXX_FLAGS = -O3 -ffast-math -march=native -fopenmp -g   -g -std=gnu++11 -fdiagnostics-color=always
 

@@ -55,7 +55,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 67,
+				"line" : 68,
 				"parent" : 4
 			}
 		]
@@ -66,7 +66,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "  -std=c++11 -g -std=gnu++20 -fPIC -fdiagnostics-color=always"
+					"fragment" : "-O3 -ffast-math -march=native -fopenmp -g   -std=c++11 -g -std=gnu++20 -fPIC -fdiagnostics-color=always"
 				}
 			],
 			"defines" : 

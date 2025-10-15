@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "external/faiss/faiss/libfaiss_avx2.a"
+			"path" : "external/faiss/faiss/libfaiss.a"
 		}
 	],
 	"backtrace" : 1,
@@ -12,7 +12,7 @@
 		"commands" : 
 		[
 			"add_library",
-			"target_compile_options",
+			"install",
 			"target_link_libraries",
 			"target_compile_definitions",
 			"include_directories",
@@ -31,25 +31,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 226,
+				"line" : 224,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 231,
+				"line" : 284,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 268,
+				"line" : 267,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 264,
+				"line" : 263,
 				"parent" : 0
 			},
 			{
@@ -64,7 +64,7 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 246,
+				"line" : 243,
 				"parent" : 0
 			}
 		]
@@ -75,23 +75,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++11 -fPIC -fdiagnostics-color=always"
-				},
-				{
-					"backtrace" : 2,
-					"fragment" : "-mavx2"
-				},
-				{
-					"backtrace" : 2,
-					"fragment" : "-mfma"
-				},
-				{
-					"backtrace" : 2,
-					"fragment" : "-mf16c"
-				},
-				{
-					"backtrace" : 2,
-					"fragment" : "-mpopcnt"
+					"fragment" : "-O3 -ffast-math -march=native -fopenmp -g   -g -std=gnu++11 -fPIC -fdiagnostics-color=always"
 				},
 				{
 					"backtrace" : 3,
@@ -216,9 +200,23 @@
 			]
 		}
 	],
-	"id" : "faiss_avx2::@4f45fee92732d97bb1a0",
-	"name" : "faiss_avx2",
-	"nameOnDisk" : "libfaiss_avx2.a",
+	"id" : "faiss::@4f45fee92732d97bb1a0",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "lib"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
+	"name" : "faiss",
+	"nameOnDisk" : "libfaiss.a",
 	"paths" : 
 	{
 		"build" : "external/faiss/faiss",

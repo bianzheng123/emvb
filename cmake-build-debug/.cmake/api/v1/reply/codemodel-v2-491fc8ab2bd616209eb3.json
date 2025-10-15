@@ -261,147 +261,147 @@
 				{
 					"directoryIndex" : 5,
 					"id" : "1-Flat::@d95e0b3e74ccfa884fa0",
-					"jsonFile" : "target-1-Flat-Debug-b6e98b7ede3fc2028956.json",
+					"jsonFile" : "target-1-Flat-Debug-328f994bd96b47b60679.json",
 					"name" : "1-Flat",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 5,
 					"id" : "2-IVFFlat::@d95e0b3e74ccfa884fa0",
-					"jsonFile" : "target-2-IVFFlat-Debug-a537bfec3e55c7e64bc8.json",
+					"jsonFile" : "target-2-IVFFlat-Debug-d8103aeb9b8ab18159bf.json",
 					"name" : "2-IVFFlat",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 5,
 					"id" : "3-IVFPQ::@d95e0b3e74ccfa884fa0",
-					"jsonFile" : "target-3-IVFPQ-Debug-429db15e7cd1d170827d.json",
+					"jsonFile" : "target-3-IVFPQ-Debug-195713090739c17b3ebb.json",
 					"name" : "3-IVFPQ",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 5,
 					"id" : "4-GPU::@d95e0b3e74ccfa884fa0",
-					"jsonFile" : "target-4-GPU-Debug-2b1b60350ac5d0bc09bc.json",
+					"jsonFile" : "target-4-GPU-Debug-0df57edd05752234b015.json",
 					"name" : "4-GPU",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 5,
 					"id" : "5-Multiple-GPUs::@d95e0b3e74ccfa884fa0",
-					"jsonFile" : "target-5-Multiple-GPUs-Debug-24006b2f8bdfcefb7160.json",
+					"jsonFile" : "target-5-Multiple-GPUs-Debug-c17e3bdbb20f10a69db6.json",
 					"name" : "5-Multiple-GPUs",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 4,
 					"id" : "bench_ivf_selector::@fef9579cdbc7f8aed9f5",
-					"jsonFile" : "target-bench_ivf_selector-Debug-8a6e609047e8f3074086.json",
+					"jsonFile" : "target-bench_ivf_selector-Debug-f75540106d005ff169b6.json",
 					"name" : "bench_ivf_selector",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 6,
 					"id" : "cnpy::@6e336ab1413620e5523a",
-					"jsonFile" : "target-cnpy-Debug-fd1d8fc45b27cdbcbd61.json",
+					"jsonFile" : "target-cnpy-Debug-78ca751b355fddb1e515.json",
 					"name" : "cnpy",
 					"projectIndex" : 2
 				},
 				{
 					"directoryIndex" : 6,
 					"id" : "cnpy-static::@6e336ab1413620e5523a",
-					"jsonFile" : "target-cnpy-static-Debug-914763ba83271da7dc1f.json",
+					"jsonFile" : "target-cnpy-static-Debug-23e7cf0206a90d668830.json",
 					"name" : "cnpy-static",
 					"projectIndex" : 2
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "demo_imi_flat::@5192e14a8008f62fa5d7",
-					"jsonFile" : "target-demo_imi_flat-Debug-225956e16d3778f4332c.json",
+					"jsonFile" : "target-demo_imi_flat-Debug-0044b7912939c34354ed.json",
 					"name" : "demo_imi_flat",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "demo_imi_pq::@5192e14a8008f62fa5d7",
-					"jsonFile" : "target-demo_imi_pq-Debug-6602671c57e71d8913c3.json",
+					"jsonFile" : "target-demo_imi_pq-Debug-9e46dfd32faf033759b2.json",
 					"name" : "demo_imi_pq",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "demo_ivfpq_indexing::@5192e14a8008f62fa5d7",
-					"jsonFile" : "target-demo_ivfpq_indexing-Debug-5a88d8a2288414a840b8.json",
+					"jsonFile" : "target-demo_ivfpq_indexing-Debug-fd9f14f309fdec9f1c4a.json",
 					"name" : "demo_ivfpq_indexing",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "demo_nndescent::@5192e14a8008f62fa5d7",
-					"jsonFile" : "target-demo_nndescent-Debug-5a44a74d9e1b87029176.json",
+					"jsonFile" : "target-demo_nndescent-Debug-718f1cdb9d0c82812965.json",
 					"name" : "demo_nndescent",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "demo_residual_quantizer::@5192e14a8008f62fa5d7",
-					"jsonFile" : "target-demo_residual_quantizer-Debug-42c69d127741f2e0624c.json",
+					"jsonFile" : "target-demo_residual_quantizer-Debug-39ebcfe61af3f7324d13.json",
 					"name" : "demo_residual_quantizer",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "demo_sift1M::@5192e14a8008f62fa5d7",
-					"jsonFile" : "target-demo_sift1M-Debug-4db0dfcb402181825ea2.json",
+					"jsonFile" : "target-demo_sift1M-Debug-eb2a0669744ea8d05029.json",
 					"name" : "demo_sift1M",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "demo_weighted_kmeans::@5192e14a8008f62fa5d7",
-					"jsonFile" : "target-demo_weighted_kmeans-Debug-033fd9d83442c1294db5.json",
+					"jsonFile" : "target-demo_weighted_kmeans-Debug-955f12ae1c3a67793198.json",
 					"name" : "demo_weighted_kmeans",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 8,
 					"id" : "example::@7e70838ec5c3448f60fa",
-					"jsonFile" : "target-example-Debug-6a35b904c15280013606.json",
+					"jsonFile" : "target-example-Debug-065bf62f95ebcc27b580.json",
 					"name" : "example",
 					"projectIndex" : 4
 				},
 				{
 					"directoryIndex" : 6,
 					"id" : "example1::@6e336ab1413620e5523a",
-					"jsonFile" : "target-example1-Debug-d42ec0c18f8a041051ff.json",
+					"jsonFile" : "target-example1-Debug-24eed36cfd2c5f9a0b1e.json",
 					"name" : "example1",
 					"projectIndex" : 2
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "faiss::@4f45fee92732d97bb1a0",
-					"jsonFile" : "target-faiss-Debug-9cce8619d8a88ab5b5a2.json",
+					"jsonFile" : "target-faiss-Debug-90e1712ca598153bf7f3.json",
 					"name" : "faiss",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "faiss_avx2::@4f45fee92732d97bb1a0",
-					"jsonFile" : "target-faiss_avx2-Debug-87a45c923e637291c465.json",
+					"jsonFile" : "target-faiss_avx2-Debug-a5549bebf3d9b1bff5c9.json",
 					"name" : "faiss_avx2",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "perf_emvb::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-perf_emvb-Debug-e3cfc6c6bf9da582e56c.json",
+					"jsonFile" : "target-perf_emvb-Debug-f3492f20854974c583e1.json",
 					"name" : "perf_emvb",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 8,
 					"id" : "test_parse::@7e70838ec5c3448f60fa",
-					"jsonFile" : "target-test_parse-Debug-96a0f0bd23eae00c4fd7.json",
+					"jsonFile" : "target-test_parse-Debug-ec3095cb39edeb1573d1.json",
 					"name" : "test_parse",
 					"projectIndex" : 4
 				}

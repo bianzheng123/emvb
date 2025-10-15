@@ -32,13 +32,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 76,
+				"line" : 77,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 77,
+				"line" : 78,
 				"parent" : 0
 			},
 			{
@@ -78,7 +78,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 64,
+				"line" : 65,
 				"parent" : 0
 			},
 			{
@@ -100,19 +100,19 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 67,
+				"line" : 68,
 				"parent" : 0
 			},
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 70,
+				"line" : 71,
 				"parent" : 0
 			},
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 73,
+				"line" : 74,
 				"parent" : 0
 			}
 		]
@@ -123,7 +123,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
+					"fragment" : "-O3 -ffast-math -march=native -fopenmp -g   -g -std=gnu++20 -fdiagnostics-color=always"
 				},
 				{
 					"backtrace" : 2,
@@ -190,7 +190,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-O3 -ffast-math -march=native -fopenmp -g   -g",
 				"role" : "flags"
 			},
 			{

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/bianzheng/emvb/include -I/home/bianzheng/emvb/external/faiss -I/home/bianzheng/emvb/external/cnpy -I/home/bianzheng/emvb/external/cmd_line_parser -isystem /opt/intel/oneapi/mkl/2025.0/include
 
-CXX_FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -DMKL_ILP64 -m64
+CXX_FLAGS = -O3 -ffast-math -march=native -fopenmp -g   -g -std=gnu++20 -fdiagnostics-color=always -DMKL_ILP64 -m64
 

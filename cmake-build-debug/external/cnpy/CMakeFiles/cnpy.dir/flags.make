@@ -6,5 +6,5 @@ CXX_DEFINES = -Dcnpy_EXPORTS
 
 CXX_INCLUDES = -I/home/bianzheng/emvb/include -I/home/bianzheng/emvb/external/faiss
 
-CXX_FLAGS =   -std=c++11 -g -std=gnu++20 -fPIC -fdiagnostics-color=always
+CXX_FLAGS = -O3 -ffast-math -march=native -fopenmp -g   -std=c++11 -g -std=gnu++20 -fPIC -fdiagnostics-color=always
 

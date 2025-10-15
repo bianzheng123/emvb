@@ -19,26 +19,24 @@ using namespace std;
 
 void configure(cmd_line_parser::parser& parser)
 {
-    parser.add("k", "Number of nearest neighbours.", "-k", false);
-    parser.add("nprobe", "Number of cell to look during index search.", "-nprobe", false);
-    parser.add("index_dir_path", "Path to the decomposed index", "-index-dir-path", false);
-    parser.add("thresh", "Threshold", "-thresh", false);
-    parser.add("thresh_query", "Threshold", "-thresh-query", false);
+    parser.add("k", "Number of nearest neighbours.", "-k", true);
+    parser.add("nprobe", "Number of cell to look during index search.", "-nprobe", true);
+    parser.add("index_dir_path", "Path to the decomposed index", "-index-dir-path", true);
+    parser.add("thresh", "Threshold", "-thresh", true);
+    parser.add("thresh_query", "Threshold", "-thresh-query", true);
 
     parser.add("out_second_stage", "Number of candidate documents selected with bitvectors", "-out-second-stage",
-               false);
-    parser.add("n_doc_to_score", "Number of document to score", "-n-doc-to-score", false);
-    parser.add("n_thread", "Number of document to score", "-n-thread", false);
-    parser.add("queries_id_file", "Path to queries_id file", "-queries-id-file", false);
+               true);
+    parser.add("n_doc_to_score", "Number of document to score", "-n-doc-to-score", true);
+    parser.add("n_thread", "Number of document to score", "-n-thread", true);
+    parser.add("queries_id_file", "Path to queries_id file", "-queries-id-file", true);
     // todo remove in the future questo troiaio (id only tsv)
-    parser.add("alldoclens_path", "Path to the doclens file", "-alldoclens-path", false);
-    parser.add("outputfile", "Path to the output file used to compute the metrics", "-out-file", false);
+    parser.add("alldoclens_path", "Path to the doclens file", "-alldoclens-path", true);
+    parser.add("outputfile", "Path to the output file used to compute the metrics", "-out-file", true);
 }
 
 int main(int argc, char** argv)
 {
-    omp_set_num_threads(1);
-
     cmd_line_parser::parser parser(argc, argv);
     configure(parser);
     bool success = parser.parse();
@@ -52,6 +50,7 @@ int main(int argc, char** argv)
 
     size_t n_doc_to_score = parser.get<size_t>("n_doc_to_score");
     size_t n_thread = parser.get<size_t>("n_thread");
+    cout << "Num. threads: " << n_thread << "\n";
     size_t nprobe = parser.get<size_t>("nprobe");
     size_t out_second_stage = parser.get<size_t>("out_second_stage");
     string queries_id_file = parser.get<string>("queries_id_file");
@@ -121,8 +120,8 @@ int main(int argc, char** argv)
     {
         result_topk_l[query_id].resize(k);
     }
-    auto start = chrono::high_resolution_clock::now();
     cout << "SEARCH STARTED\n";
+    auto start = chrono::high_resolution_clock::now();
 #pragma omp parallel for default(none) shared(n_queries, values_per_query, document_scorer_l, thresh, nprobe, loaded_query_data, n_doc_to_score, out_second_stage, thresh_query, k) num_threads(n_thread)
     for (size_t query_id = 0; query_id < n_queries; query_id++)
     {
@@ -145,6 +144,11 @@ int main(int argc, char** argv)
         auto query_res =  document_scorer_l[threadID]->compute_topk_documents_selected(
             loaded_query_data, q_start, selected_docs_2nd, k, thresh_query);
         // printf("query_id %lu start5\n", query_id);
+
+        for (int i = 0; i < k; i++)
+        {
+            result_topk_l[query_id][i] = std::make_pair(get<0>(query_res[i]), get<1>(query_res[i]));
+        }
     }
     uint64_t total_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
 

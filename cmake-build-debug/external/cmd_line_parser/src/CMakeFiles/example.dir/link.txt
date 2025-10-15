@@ -1,1 +1,1 @@
-/usr/bin/c++   -O3 -march=native -ggdb -Wall -Wextra -Wno-missing-braces -g -Wl,--dependency-file=CMakeFiles/example.dir/link.d CMakeFiles/example.dir/example.cpp.o -o ../../../example
+/usr/bin/c++ -O3 -ffast-math -march=native -fopenmp -g   -O3 -march=native -ggdb -Wall -Wextra -Wno-missing-braces -g -Wl,--dependency-file=CMakeFiles/example.dir/link.d CMakeFiles/example.dir/example.cpp.o -o ../../../example

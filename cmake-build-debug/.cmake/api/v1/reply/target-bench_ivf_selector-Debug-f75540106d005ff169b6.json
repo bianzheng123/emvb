@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "external/faiss/demos/demo_nndescent"
+			"path" : "external/faiss/benchs/bench_ivf_selector"
 		}
 	],
 	"backtrace" : 1,
@@ -18,7 +18,7 @@
 		],
 		"files" : 
 		[
-			"external/faiss/demos/CMakeLists.txt",
+			"external/faiss/benchs/CMakeLists.txt",
 			"/home/bianzheng/software/cmake-4.0.2-linux-x86_64/share/cmake-4.0/Modules/FindOpenMP.cmake",
 			"external/faiss/faiss/CMakeLists.txt",
 			"CMakeLists.txt"
@@ -31,13 +31,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
+				"line" : 9,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 17,
+				"line" : 10,
 				"parent" : 0
 			},
 			{
@@ -82,7 +82,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++11 -fdiagnostics-color=always"
+					"fragment" : "-O3 -ffast-math -march=native -fopenmp -g   -g -std=gnu++11 -fdiagnostics-color=always"
 				}
 			],
 			"includes" : 
@@ -118,13 +118,13 @@
 			"id" : "faiss::@4f45fee92732d97bb1a0"
 		}
 	],
-	"id" : "demo_nndescent::@5192e14a8008f62fa5d7",
+	"id" : "bench_ivf_selector::@fef9579cdbc7f8aed9f5",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-O3 -ffast-math -march=native -fopenmp -g   -g",
 				"role" : "flags"
 			},
 			{
@@ -174,12 +174,12 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "demo_nndescent",
-	"nameOnDisk" : "demo_nndescent",
+	"name" : "bench_ivf_selector",
+	"nameOnDisk" : "bench_ivf_selector",
 	"paths" : 
 	{
-		"build" : "external/faiss/demos",
-		"source" : "external/faiss/demos"
+		"build" : "external/faiss/benchs",
+		"source" : "external/faiss/benchs"
 	},
 	"sourceGroups" : 
 	[
@@ -196,7 +196,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "external/faiss/demos/demo_nndescent.cpp",
+			"path" : "external/faiss/benchs/bench_ivf_selector.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

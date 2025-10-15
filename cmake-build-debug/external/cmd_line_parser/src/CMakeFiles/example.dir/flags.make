@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/bianzheng/emvb/include -I/home/bianzheng/emvb/external/faiss -I/home/bianzheng/emvb/external/cnpy
 
-CXX_FLAGS =   -O3 -march=native -ggdb -Wall -Wextra -Wno-missing-braces -g -std=gnu++17 -fdiagnostics-color=always
+CXX_FLAGS = -O3 -ffast-math -march=native -fopenmp -g   -O3 -march=native -ggdb -Wall -Wextra -Wno-missing-braces -g -std=gnu++17 -fdiagnostics-color=always
 
