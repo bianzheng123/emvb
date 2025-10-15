@@ -9,7 +9,7 @@ if(NOT DEFINED CMAKE_CXX_STANDARD)
 endif()
 
 if (NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release")
+  set(CMAKE_BUILD_TYPE "Release")
 endif ()
 
 MESSAGE(STATUS "CMAKE_BUILD_TYPE: " ${CMAKE_BUILD_TYPE})
@@ -18,7 +18,7 @@ include_directories(include)
 
 # Set compiler options
 if(NOT MSVC)
-#  set(CMAKE_C_FLAGS "-O3 -ffast-math -march=native -mavx512f  -funroll-loops -fopenmp -g ${CMAKE_C_FLAGS}")
+  #  set(CMAKE_C_FLAGS "-O3 -ffast-math -march=native -mavx512f  -funroll-loops -fopenmp -g ${CMAKE_C_FLAGS}")
   set(CMAKE_C_FLAGS "-O3 -ffast-math -march=native -mavx512f -mavx512vl -mavx512bw -funroll-loops -fopenmp -g ${CMAKE_C_FLAGS}")
 
 
@@ -59,6 +59,7 @@ set(CMAKE_CXX_EXTENSIONS YES)
 ## External projects 
 Include(FetchContent)
 
+set(MKL_DIR /opt/intel/oneapi/mkl/latest/lib/cmake/mkl/)
 
 find_package(MKL CONFIG REQUIRED)
 

@@ -1,0 +1,18 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/bianzheng/emvb/cmake-build-debug/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/faiss/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/faiss/faiss/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/faiss/demos/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/faiss/benchs/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/faiss/tutorial/cpp/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/faiss/tests/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/_deps/googletest-build/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/_deps/googletest-build/googletest/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/cnpy/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/cmd_line_parser/cmake_install.cmake",
+		"/home/bianzheng/emvb/cmake-build-debug/external/cmd_line_parser/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

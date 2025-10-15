@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/bianzheng/emvb/cmake-build-debug/_deps/googletest-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

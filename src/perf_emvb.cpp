@@ -14,6 +14,7 @@
 #include "include/parser.hpp"
 
 #include "DocumentScorer.hpp"
+#include "DocumentScorerRef.hpp"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ void configure(cmd_line_parser::parser &parser)
 
     parser.add("out_second_stage", "Number of candidate documents selected with bitvectors", "-out-second-stage", false);
     parser.add("n_doc_to_score", "Number of document to score", "-n-doc-to-score", false);
+    parser.add("n_thread", "Number of threads", "-n-thread", false);
     parser.add("queries_id_file", "Path to queries_id file", "-queries-id-file", false); // todo remove in the future questo troiaio (id only tsv)
     parser.add("alldoclens_path", "Path to the doclens file", "-alldoclens-path", false);
     parser.add("outputfile", "Path to the output file used to compute the metrics", "-out-file", false);
@@ -52,6 +54,7 @@ int main(int argc, char **argv)
     size_t n_doc_to_score = parser.get<size_t>("n_doc_to_score");
     size_t nprobe = parser.get<size_t>("nprobe");
     size_t out_second_stage = parser.get<size_t>("out_second_stage");
+    size_t n_thread = parser.get<size_t>("n_thread");
     string queries_id_file = parser.get<string>("queries_id_file");
     string index_dir_path = parser.get<string>("index_dir_path");
     string alldoclens_path = parser.get<string>("alldoclens_path");
@@ -78,22 +81,27 @@ int main(int argc, char **argv)
 
     // load documents
     DocumentScorer document_scorer(alldoclens_path, index_dir_path, vec_per_query);
+    std::vector<DocumentScorerRef> document_scorer_ref_l(n_thread, document_scorer);
 
 
-
-    ofstream out_file; // file with final output
-    out_file.open(outputfile);
-
-    uint64_t total_time = 0;
     // uint64_t tot_time_score = 0;
     // uint64_t time_centroids_selection = 0;
     // uint64_t time_second_stage = 0;
 
     // uint64_t time_document_filtering = 0;
 
+    std::vector<std::vector<std::pair<unsigned long, float>>> result_topk_l(n_queries);
+    for(uint32_t query_id=0;query_id < n_queries;query_id++)
+    {
+        result_topk_l[query_id].resize(k);
+    }
+    auto start = chrono::high_resolution_clock::now();
+
     cout << "SEARCH STARTED\n";
+#pragma omp parallel for default(none) shared() num_threads(n_thread)
     for (size_t query_id = 0; query_id < n_queries; query_id++)
     {
+        const int threadID = omp_get_thread_num();
         auto start = chrono::high_resolution_clock::now();
         globalIdxType q_start = query_id * values_per_query;
 
@@ -110,15 +118,21 @@ int main(int argc, char **argv)
         // PHASE 4: document scoring
         auto query_res = document_scorer.compute_topk_documents_selected(loaded_query_data, q_start, selected_docs_2nd, k, thresh_query);
 
-        auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
-        total_time += elapsed;
-        // write top k file
-
         for (int i = 0; i < k; i++)
         {
-            out_file << qid_map[query_id] << "\t" << get<0>(query_res[i]) << "\t" << i + 1 << "\t" << get<1>(query_res[i]) << endl;
+            result_topk_l[query_id][i] = std::make_pair(get<0>(query_res[i]), get<1>(query_res[i]));
         }
-        out_file.flush();
+    }
+    uint64_t total_time = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
+
+    ofstream out_file; // file with final output
+    out_file.open(outputfile);
+    for(size_t query_id = 0; query_id < n_queries; query_id++)
+    {
+        for(int i = 0; i < k; i++)
+        {
+            out_file << qid_map[query_id] << "\t" << result_topk_l[query_id][i].first << "\t" << i + 1 << "\t" << result_topk_l[query_id][i].second << endl;
+        }
     }
 
     out_file.flush();

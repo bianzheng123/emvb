@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -ffast-math -march=native -mavx512f -mavx512vl -mavx512bw -funroll-loops -fopenmp -g   -ggdb -Wall -Wextra -Wno-missing-braces -std=c++11 -g -Wl,--dependency-file=CMakeFiles/cnpy.dir/link.d -shared -Wl,-soname,libcnpy.so -o libcnpy.so CMakeFiles/cnpy.dir/cnpy.cpp.o  /usr/lib/x86_64-linux-gnu/libz.so

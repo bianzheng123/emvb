@@ -45,7 +45,7 @@ const uint32_t BUFFER_SIZE = 50000;
 
 class DocumentScorer
 {
-private:
+public:
     NpyArray doclensArray, centroidsArray, centroidsAssignmentArray, pqCodesArray, pqCentroidsArray;
     vector<vector<size_t>> centroids_to_pid;
     uint8_t *pq_codes;
@@ -75,7 +75,7 @@ private:
 
     int *GLOBAL_INDEXES;
 
-public:
+
     ProductQuantizerX pq; 
     size_t globalCounter = 0;
 
