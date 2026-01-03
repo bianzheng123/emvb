@@ -47,7 +47,7 @@ def main(args):
     qid2positives = defaultdict(list)
     qid2ranking = defaultdict(list)
     qid2mrr = {}
-    qid2recall = {depth: {} for depth in [100, 1000]}
+    qid2recall = {depth: {} for depth in [10, 100, 1000]}
 
     with open(args.qrels) as f:
         print_message(f"#> Loading QRELs from {args.qrels} ..")
@@ -118,7 +118,39 @@ def main(args):
     mrr_10_sum = sum(qid2mrr.values())
     print(f"#> MRR@10 = {mrr_10_sum / num_judged_queries}")
     print("#> MRR@10 (only for ranked queries) = {:.3f}".format(mrr_10_sum / num_ranked_queries))
-    
+
+
+    # ----------------------------------------
+    print(f"#> Computing MRR@100 for {num_judged_queries} queries.")
+    qid2mrr = {}
+    for qid in qid2positives:
+        ranking = qid2ranking[qid]
+        positives = qid2positives[qid]
+
+        for rank, (_, pid, _) in enumerate(ranking):
+            rank = rank + 1  # 1-indexed
+
+            if pid in positives:
+                if rank <= 100:
+                    qid2mrr[qid] = 1.0 / rank
+                break
+
+    assert len(qid2mrr) <= num_ranked_queries, (len(qid2mrr), num_ranked_queries)
+
+
+    # with open("qid2mrr.json", "w") as mrrfile:
+    #     json.dump(qid2mrr, mrrfile)
+
+    # with open("qid2recall.json", "w") as recallfile:
+    #     json.dump(qid2recall, recallfile)
+
+    print()
+    mrr_10_sum = sum(qid2mrr.values())
+    print(f"#> MRR@100 = {mrr_10_sum / num_judged_queries}")
+    print("#> MRR@100 (only for ranked queries) = {:.3f}".format(mrr_10_sum / num_ranked_queries))
+    # ----------------------------------------
+
+
 
     for depth in qid2recall:
         assert len(qid2recall[depth]) <= num_ranked_queries, (len(qid2recall[depth]), num_ranked_queries)

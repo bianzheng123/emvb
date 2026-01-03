@@ -122,7 +122,7 @@ int main(int argc, char** argv)
     }
     cout << "SEARCH STARTED\n";
     auto start = chrono::high_resolution_clock::now();
-#pragma omp parallel for default(none) shared(n_queries, values_per_query, document_scorer_l, thresh, nprobe, loaded_query_data, n_doc_to_score, out_second_stage, thresh_query, k) num_threads(n_thread)
+#pragma omp parallel for default(none) shared(n_queries, values_per_query, result_topk_l, document_scorer_l, thresh, nprobe, loaded_query_data, n_doc_to_score, out_second_stage, thresh_query, k) num_threads(n_thread)
     for (size_t query_id = 0; query_id < n_queries; query_id++)
     {
         // printf("query_id %lu start\n", query_id);
